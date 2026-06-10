@@ -4,11 +4,9 @@ import { Outlet } from "react-router-dom";
 
 function Layout() {
   return (
-    <div>
+    <div className="bg-[#FFF8F2]">
       <Navbar />
-      <main className="max-w-md mx-auto">
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer />
     </div>
   );

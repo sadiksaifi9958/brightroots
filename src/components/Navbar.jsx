@@ -8,7 +8,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="flex items-center justify-between w-full h-16 px-10">
+    <div className="flex items-center justify-between w-full h-16 px-10 bg-white">
       <div className="flex items-center text-2xl font-bold">
         <span className="text-[#FF6B00]">Bright</span>
         <span className="text-[#00BCD4]">Roots</span>
