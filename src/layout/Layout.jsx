@@ -6,7 +6,9 @@ function Layout() {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      <main className="max-w-md mx-auto">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

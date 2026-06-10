@@ -8,12 +8,12 @@ function Navbar() {
   ];
 
   return (
-    <div className="flex items-center justify-between p-5 w-full h-16 px-10">
+    <div className="flex items-center justify-between w-full h-16 px-10">
       <div className="flex items-center text-2xl font-bold">
-        <p className="text-[#FF6B00]">Bright</p>
-        <p className="text-[#00BCD4]">Roots</p>
+        <span className="text-[#FF6B00]">Bright</span>
+        <span className="text-[#00BCD4]">Roots</span>
       </div>
-      <div className="flex items-center gap-8">
+      <nav className="flex items-center gap-8">
         {pages.map((link) => {
           return (
             <NavLink
@@ -28,7 +28,7 @@ function Navbar() {
             </NavLink>
           );
         })}
-      </div>
+      </nav>
     </div>
   );
 }
