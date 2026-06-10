@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="bg-[#FF6B00] py-12 rounded-lg mx-4 mb-4">
+    <div className="bg-[#FF6B00] py-12 rounded-xl mx-4 mb-4">
       <div className="text-[#FFF8F2] text-lg text-center mb-2">
         Made with ❤️ for rural students of India
       </div>

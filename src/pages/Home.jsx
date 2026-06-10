@@ -1,16 +1,11 @@
+import subjects from "../data/subjects";
+
 function Home() {
   const stats = [
     { heading: "4", subtitle: "Subjects" },
     { heading: "40", subtitle: "Questions" },
     { heading: "4", subtitle: "Badges" },
     { heading: "100%", subtitle: "Free" },
-  ];
-
-  const subjects = [
-    { name: "Mathematics", icon: "📐", difficulty: "Hard" },
-    { name: "Environmental Science", icon: "🌿", difficulty: "Medium" },
-    { name: "General Knowledge", icon: "�", difficulty: "Medium" },
-    { name: "Digital Literacy", icon: "💻", difficulty: "Easy" },
   ];
 
   const working = [
