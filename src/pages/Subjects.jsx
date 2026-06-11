@@ -1,7 +1,9 @@
 import { BsArrowLeft } from "react-icons/bs";
 import subjects from "../data/subjects";
+// import { useNavigate } from "react-router-dom";
 
 function Subjects() {
+  // const navigate = useNavigate();
   return (
     <div className="w-full flex flex-col gap-8 bg-[#FFF8F2] p-4">
       <button className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200">
@@ -20,7 +22,10 @@ function Subjects() {
       </div>
       <div className="grid grid-cols-2 gap-6 items-center justify-center w-full px-6">
         {subjects.map((card) => (
-          <div className="w-full py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-8 bg-white hover:shadow-md transition-shadow duration-200 cursor-pointer">
+          <div
+            className="w-full py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-8 bg-white hover:shadow-md transition-shadow duration-200 cursor-pointer"
+            // onClick={navigate(card.slug)}
+          >
             <span className="text-5xl">{card.icon}</span>
             <h1 className="text-xl text-[#1A1A1A] font-bold">{card.name}</h1>
             <p className="flex gap-2 text-[#888888]">
