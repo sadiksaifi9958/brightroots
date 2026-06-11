@@ -1,9 +1,9 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 import { FaRegClock } from "react-icons/fa";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { FaArrowRight } from "react-icons/fa";
-import matmathQuestions from "../data/math";
+import mathQuestions from "../data/math";
 import evsQuestions from "../data/evs";
 import gkQuestions from "../data/gk";
 import digitalLiteracyQuestions from "../data/digital";
@@ -22,7 +22,7 @@ function Quiz() {
   const displayName = subjectNames[subjects];
 
   const questionMap = {
-    math: matmathQuestions,
+    math: mathQuestions,
     evs: evsQuestions,
     gk: gkQuestions,
     digital: digitalLiteracyQuestions,
@@ -80,8 +80,15 @@ function Quiz() {
         <div className="flex flex-col gap-4 w-70/100">
           {firstQuestion.options.map((option, index) => (
             <button
-              className="px-6 py-6 border border-[#FFD9B3] bg-[#FFF3E8] rounded-2xl flex items-center gap-4 mb-4 cursor-pointer active:translate-y-1 transition-transform duration-150"
+              className={`px-6 py-6 border rounded-2xl flex items-center gap-4 mb-4 cursor-pointer active:translate-y-1 transition-transform duration-150 ${option === firstQuestion.answer && selectedOption ? "bg-[#E0F7FA] border-[#00BCD4] text-[#00838F]" : option === selectedOption && option !== firstQuestion.answer ? "bg-[#FFEBEE] border-[#E57373] text-[#C62828]" : "bg-[#FFF3E8] border-[#FFD9B3] text-[#1A1A1A]"} ${
+                selectedOption &&
+                option !== firstQuestion.answer &&
+                option !== selectedOption
+                  ? "opacity-50"
+                  : "opacity-100"
+              }`}
               onClick={() => setSelectedOption(option)}
+              disabled={!!selectedOption}
             >
               <div className="text-lg text-[#FFD9B3] font-bold">
                 {optionsLabel[index]}
@@ -90,32 +97,36 @@ function Quiz() {
             </button>
           ))}
         </div>
-        <div className="w-70/100 bg-sky-100 border border-sky-200 rounded-xl px-6 py-4 flex flex-col gap-2 mb-4">
-          <div className="flex gap-4 text-[#00BCD4] items-center">
-            <div className="text-xl">
-              <HiOutlineLightBulb />
+        {selectedOption && (
+          <div className="w-70/100 bg-sky-100 border border-sky-200 rounded-xl px-6 py-4 flex flex-col gap-2 mb-4">
+            <div className="flex gap-4 text-[#00BCD4] items-center">
+              <div className="text-xl">
+                <HiOutlineLightBulb />
+              </div>
+              <div className="text-lg">Explanation</div>
             </div>
-            <div className="text-lg">Explanation</div>
+            <div className="text-[#00BCD4] text-md">
+              {firstQuestion.explanation}
+            </div>
           </div>
-          <div className="text-[#00BCD4] text-md">
-            240 ÷ 8 = 30. Division helps farmers divide crops, seeds, and
-            resources equally among workers or bags.{" "}
-          </div>
-        </div>
-        <button
-          className="py-3 border border-[#00BCD4] text-[#1A1A1A] text-lg w-70/100 rounded-xl mb-6 cursor-pointer font-bold flex gap-3 justify-center items-center active:scale-95 active:bg-[#00BCD4]/20 transition-all duration-150"
-          onClick={() => {
-            setCurrentQuestionIndex((index) => {
-              if (index < questions.length - 1) {
-                return index + 1;
-              } else {
-                return index;
-              }
-            });
-          }}
-        >
-          Next Question <FaArrowRight />
-        </button>
+        )}
+        {selectedOption && (
+          <button
+            className="py-3 border border-[#00BCD4] text-[#1A1A1A] text-lg w-70/100 rounded-xl mb-6 cursor-pointer font-bold flex gap-3 justify-center items-center active:scale-95 active:bg-[#00BCD4]/20 transition-all duration-150"
+            onClick={() => {
+              setSelectedOption(null);
+              setCurrentQuestionIndex((index) => {
+                if (index < questions.length - 1) {
+                  return index + 1;
+                } else {
+                  return index;
+                }
+              });
+            }}
+          >
+            Next Question <FaArrowRight />
+          </button>
+        )}
       </div>
     </div>
   );

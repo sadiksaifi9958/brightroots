@@ -1,4 +1,4 @@
-export const gkQuestions = [
+const gkQuestions = [
   {
     question: "What is the national animal of India?",
     options: ["Bengal Tiger", "Lion", "Elephant", "Leopard"],
@@ -85,3 +85,5 @@ export const gkQuestions = [
       "India currently has 28 states and 8 Union Territories. Jammu & Kashmir was reorganized into 2 Union Territories in 2019, reducing states from 29 to 28.",
   },
 ];
+
+export default gkQuestions;
