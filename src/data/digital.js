@@ -100,3 +100,5 @@ export const digitalLiteracyQuestions = [
       "DigiLocker is a government app where you can store digital copies of important documents like Aadhaar, driving licence, and marksheets. Very useful for rural citizens.",
   },
 ];
+
+export default digitalLiteracyQuestions;

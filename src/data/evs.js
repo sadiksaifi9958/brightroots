@@ -1,4 +1,4 @@
-export const evsQuestions = [
+const evsQuestions = [
   {
     question: "Which of these is a Kharif crop?",
     options: ["Rice", "Wheat", "Mustard", "Pea"],
@@ -76,3 +76,5 @@ export const evsQuestions = [
       "Burning crop waste causes air pollution. Converting it into compost is better — it enriches the soil naturally and reduces the need for chemical fertilizers.",
   },
 ];
+
+export default evsQuestions;

@@ -5,7 +5,7 @@ const subjects = [
     difficulty: "Hard",
     xp: "60 XP earned",
     progress: "60%",
-    slug: "mathematics",
+    slug: "math",
   },
   {
     name: "Environmental Science",
@@ -13,7 +13,7 @@ const subjects = [
     difficulty: "Medium",
     xp: "Not started",
     progress: 0,
-    slug: "environmental science",
+    slug: "evs",
   },
   {
     name: "General Knowledge",
@@ -21,7 +21,7 @@ const subjects = [
     difficulty: "Medium",
     xp: "100 XP earned",
     progress: "100%",
-    slug: "general knowledge",
+    slug: "gk",
   },
   {
     name: "Digital Literacy",
@@ -29,7 +29,7 @@ const subjects = [
     difficulty: "Easy",
     xp: "Not started",
     progress: 0,
-    slug: "digital literacy",
+    slug: "digital",
   },
 ];
 

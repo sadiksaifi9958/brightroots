@@ -1,4 +1,4 @@
-export const mathQuestions = [
+const mathQuestions = [
   {
     question: "What is 15 × 8?",
     options: ["120", "105", "110", "125"],
@@ -72,3 +72,5 @@ export const mathQuestions = [
       "Profit = Selling Price - Cost Price = ₹100 - ₹80 = ₹20. Understanding profit and loss helps in managing small businesses and shops.",
   },
 ];
+
+export default mathQuestions;
