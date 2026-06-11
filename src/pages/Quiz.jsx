@@ -7,7 +7,7 @@ import mathQuestions from "../data/math";
 import evsQuestions from "../data/evs";
 import gkQuestions from "../data/gk";
 import digitalLiteracyQuestions from "../data/digital";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function Quiz() {
   const { subjects } = useParams();
   const optionsLabel = ["A", "B", "C", "D"];
@@ -35,6 +35,22 @@ function Quiz() {
   const firstQuestion = questions[currentQuestionIndex];
 
   const [selectedOption, setSelectedOption] = useState();
+  const [timeLeft, setTimeLeft] = useState(30);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 1) {
+          setSelectedOption(null);
+          setCurrentQuestionIndex((i) => i + 1);
+          return 30;
+        }
+        return prevTime - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className="w-full">
@@ -61,11 +77,14 @@ function Quiz() {
           <div className="text-[#FF6B00] text-xl">
             <FaRegClock />
           </div>
-          <div className="text-[#FF6B00] text-2xl">Time Left:</div>
-          <div className="text-[#FF6B00] text-4xl font-bold">15s</div>
+          <div className="text-[#FF6B00] text-xl">Time Left:</div>
+          <div className="text-[#FF6B00] text-4xl font-bold">{timeLeft}s</div>
           <div className="flex flex-col gap-8 flex-1">
             <div className="w-full bg-[#FFD9B3] h-3 rounded-full">
-              <div className="bg-[#FF6B00] w-100 h-3 rounded-full"></div>
+              <div
+                className="bg-[#FF6B00] h-3 rounded-full transition-all duration-400"
+                style={{ width: timeLeft * 25 }}
+              ></div>
             </div>
           </div>
         </div>
