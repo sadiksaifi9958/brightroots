@@ -1,9 +1,13 @@
 import { BsArrowLeft } from "react-icons/bs";
 import subjects from "../data/subjects";
 import { useNavigate } from "react-router-dom";
+import { QuizContext } from "../context/QuizContext";
+import { useContext } from "react";
 
 function Subjects() {
   const navigate = useNavigate();
+  const { subjectProgress } = useContext(QuizContext);
+
   return (
     <div className="w-full flex flex-col gap-8 bg-[#FFF8F2] p-4">
       <button className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200">
@@ -46,10 +50,12 @@ function Subjects() {
               <div className="h-2 bg-[#FFF3E8] rounded-full w-full">
                 <div
                   className="h-2 bg-[#FF6B00] rounded-full"
-                  style={{ width: card.progress }}
+                  style={{ width: `${subjectProgress[card.slug]}%` }}
                 ></div>
               </div>
-              <div className="text-[#888888] text-sm">{card.xp}</div>
+              <div className="text-[#888888] text-sm">
+                {subjectProgress[card.slug]} XP Earned
+              </div>
             </div>
           </div>
         ))}

@@ -1,14 +1,15 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useState } from "react";
 
-const QuizContext = createContext();
+export const QuizContext = createContext();
 
 export const QuizProvider = ({ children }) => {
-  const [selectedSubject, setSelectedSubject] = useState();
-  const [score, setScore] = useState();
-  const [currentQues, setCurrentQues] = useState();
-  const [xpEarned, setXpEarned] = useState();
-  const [badgesUnlocked, setBadgesUnlocked] = useState();
-  const [answers, setAnswers] = useState([]);
+  const [selectedSubject, setSelectedSubject] = useState("");
+  const [score, setScore] = useState(0);
+  const [currentQues, setCurrentQues] = useState(0);
+  const [xpEarned, setXpEarned] = useState(0);
+  const [badgesUnlocked, setBadgesUnlocked] = useState(0);
+  const [answer, setAnswer] = useState([]);
   const [subjectProgress, setSubjectProgress] = useState({
     math: 0,
     gk: 0,
@@ -19,7 +20,7 @@ export const QuizProvider = ({ children }) => {
   const resetQuiz = () => {
     setScore(0);
     setCurrentQues(0);
-    setAnswers([]);
+    setAnswer([]);
   };
 
   return (
@@ -35,10 +36,11 @@ export const QuizProvider = ({ children }) => {
         setXpEarned,
         badgesUnlocked,
         setBadgesUnlocked,
-        answers,
-        setAnswers,
+        answer,
+        setAnswer,
         subjectProgress,
         setSubjectProgress,
+        resetQuiz,
       }}
     >
       {children}
@@ -46,4 +48,6 @@ export const QuizProvider = ({ children }) => {
   );
 };
 
-export const useQuiz = () => useContext(QuizContext);
+const useQuiz = () => useContext(QuizContext);
+
+export default useQuiz;
