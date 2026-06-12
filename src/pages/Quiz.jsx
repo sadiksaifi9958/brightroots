@@ -7,9 +7,14 @@ import mathQuestions from "../data/math";
 import evsQuestions from "../data/evs";
 import gkQuestions from "../data/gk";
 import digitalLiteracyQuestions from "../data/digital";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { QuizContext } from "../context/QuizContext";
+
 function Quiz() {
   const { subjects } = useParams();
+  const navigate = useNavigate();
+  const { setScore, setXpEarned, setSubjectProgress } = useContext(QuizContext);
   const optionsLabel = ["A", "B", "C", "D"];
 
   const subjectNames = {
@@ -35,6 +40,7 @@ function Quiz() {
   const firstQuestion = questions[currentQuestionIndex];
 
   const [selectedOption, setSelectedOption] = useState();
+
   const [timeLeft, setTimeLeft] = useState(30);
 
   useEffect(() => {
@@ -42,7 +48,14 @@ function Quiz() {
       setTimeLeft((prevTime) => {
         if (prevTime <= 1) {
           setSelectedOption(null);
-          setCurrentQuestionIndex((i) => i + 1);
+          setCurrentQuestionIndex((i) => {
+            if (i < questions.length - 1) {
+              return i + 1;
+            } else {
+              showResult();
+              return i;
+            }
+          });
           return 30;
         }
         return prevTime - 1;
@@ -50,7 +63,35 @@ function Quiz() {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, questions.length]);
+
+  const showResult = () => {
+    navigate("/result");
+  };
+
+  const handleNext = () => {
+    if (selectedOption === questions[currentQuestionIndex].answer) {
+      setScore((prev) => {
+        const newScore = prev + 1;
+        const updatedXp = newScore * 10;
+        setXpEarned(updatedXp);
+        setSubjectProgress((prev) => ({
+          ...prev,
+          [subjects]: updatedXp,
+        }));
+        return newScore;
+      });
+    }
+    setCurrentQuestionIndex((index) => {
+      if (index < questions.length - 1) {
+        return index + 1;
+      } else {
+        showResult();
+        return index;
+      }
+    });
+    setSelectedOption(null);
+  };
 
   return (
     <div className="w-full">
@@ -68,7 +109,7 @@ function Quiz() {
           <div
             className="bg-[#FF6B00] h-2"
             style={{
-              width: `${(currentQuestionIndex / questions.length) * 100}%`,
+              width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`,
             }}
           ></div>
         </div>
@@ -76,7 +117,7 @@ function Quiz() {
       <div className="w-full flex flex-col items-center">
         <div className="flex justify-between items-center py-6 w-70/100">
           <div className="text-[#FFD9B3] text-sm">{`Question ${currentQuestionIndex + 1} of 10`}</div>
-          <div className="text-[#FFD9B3] text-sm">{`${(currentQuestionIndex / 10) * 100}% done`}</div>
+          <div className="text-[#FFD9B3] text-sm">{`${((currentQuestionIndex + 1) / questions.length) * 100}% done`}</div>
         </div>
         <div className="px-12 py-10 border border-[#FFD9B3] rounded-2xl flex flex-col gap-4 items-center mb-4 w-70/100 bg-[#FFF3E8]">
           <div className="flex gap-3 items-center justify-center">
@@ -138,16 +179,7 @@ function Quiz() {
         {selectedOption && (
           <button
             className="py-3 border border-[#00BCD4] text-[#1A1A1A] text-lg w-70/100 rounded-xl mb-6 cursor-pointer font-bold flex gap-3 justify-center items-center active:scale-95 active:bg-[#00BCD4]/20 transition-all duration-150"
-            onClick={() => {
-              setSelectedOption(null);
-              setCurrentQuestionIndex((index) => {
-                if (index < questions.length - 1) {
-                  return index + 1;
-                } else {
-                  return index;
-                }
-              });
-            }}
+            onClick={handleNext}
           >
             Next Question <FaArrowRight />
           </button>
