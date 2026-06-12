@@ -50,7 +50,7 @@ function Quiz() {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [currentQuestionIndex]);
 
   return (
     <div className="w-full">
@@ -65,27 +65,33 @@ function Quiz() {
       </div>
       <div className="flex flex-col gap-8">
         <div className="w-full bg-[#FFD9B3] h-2">
-          <div className="bg-[#FF6B00] w-100 h-2"></div>
+          <div
+            className="bg-[#FF6B00] h-2"
+            style={{
+              width: `${(currentQuestionIndex / questions.length) * 100}%`,
+            }}
+          ></div>
         </div>
       </div>
       <div className="w-full flex flex-col items-center">
         <div className="flex justify-between items-center py-6 w-70/100">
-          <div className="text-[#FFD9B3] text-sm">Question 3 of 10</div>
-          <div className="text-[#FFD9B3] text-sm">30% done</div>
+          <div className="text-[#FFD9B3] text-sm">{`Question ${currentQuestionIndex + 1} of 10`}</div>
+          <div className="text-[#FFD9B3] text-sm">{`${(currentQuestionIndex / 10) * 100}% done`}</div>
         </div>
-        <div className="px-12 py-12 border border-[#FFD9B3] rounded-2xl flex gap-4 items-center mb-4 w-70/100 bg-[#FFF3E8]">
-          <div className="text-[#FF6B00] text-xl">
-            <FaRegClock />
-          </div>
-          <div className="text-[#FF6B00] text-xl">Time Left:</div>
-          <div className="text-[#FF6B00] text-4xl font-bold">{timeLeft}s</div>
-          <div className="flex flex-col gap-8 flex-1">
-            <div className="w-full bg-[#FFD9B3] h-3 rounded-full">
-              <div
-                className="bg-[#FF6B00] h-3 rounded-full transition-all duration-400"
-                style={{ width: timeLeft * 25 }}
-              ></div>
+        <div className="px-12 py-10 border border-[#FFD9B3] rounded-2xl flex flex-col gap-4 items-center mb-4 w-70/100 bg-[#FFF3E8]">
+          <div className="flex gap-3 items-center justify-center">
+            <div className="text-[#FF6B00] text-lg">
+              <FaRegClock />
             </div>
+            <div className="text-[#FF6B00] text-xl">Remaining Time:</div>
+            <div className="text-[#FF6B00] text-4xl font-bold">{timeLeft}s</div>
+          </div>
+
+          <div className="w-full bg-[#FFD9B3] h-3 rounded-full">
+            <div
+              className="bg-[#FF6B00] h-3 rounded-full transition-all duration-400"
+              style={{ width: `${(timeLeft / 30) * 100}%` }}
+            ></div>
           </div>
         </div>
         <div className="py-6 px-8 bg-[#FF6B00] rounded-2xl mb-4 w-70/100">
