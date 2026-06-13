@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const pages = [
-    { path: "/", label: "Home" },
-    { path: "/subjects", label: "Subjects" },
-    { path: "/result", label: "Leaderboard" },
+    { path: "/", label: "Explore" },
+    { path: "/subjects", label: "Play" },
+    { path: "/result", label: "My Progress" },
   ];
 
   return (
