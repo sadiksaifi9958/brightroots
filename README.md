@@ -457,17 +457,16 @@ Deploy the generated `dist` folder.
 
 # 📸 Screenshots
 
-
 - Home Page
-  ![Home Page](Assets/Home.png)
+  ![Home Page](Assets/Screenshots/Home.png)
 - Subjects Page
-  ![Subjects Page](Assets/Subjects.png)
+  ![Subjects Page](Assets/Screenshots/Subjects.png)
 - Quiz Interface
-  ![Quiz Page](Assets/Quiz.png)
+  ![Quiz Page](Assets/Screenshots/Quiz.png)
 - Results Page
-  ![Results Page](Assets/Result.png)
-- Badge System
-  ![Badge & Leaderbaord](Assets/badge.png)
+  ![Results Page](Assets/Screenshots/Results.png)
+- Badges & Leaderboard
+  ![Badge & Leaderbaord](Assets/Screenshots/Badge.png)
 
 ---
 
