@@ -10,7 +10,10 @@ function Subjects() {
 
   return (
     <div className="w-full flex flex-col gap-8 bg-[#FFF8F2] p-4">
-      <button className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200">
+      <button
+        className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200"
+        onClick={() => navigate(-1)}
+      >
         <BsArrowLeft />
       </button>
       <h1 className="text-xl text-[#1A1A1A] font-bold pl-4">
