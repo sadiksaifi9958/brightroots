@@ -109,6 +109,7 @@ function Quiz() {
         isCorrect: selectedOption === firstQuestion.answer,
       },
     ]);
+    setTimeLeft(30);
     setCurrentQuestionIndex((index) => {
       if (index < questions.length - 1) {
         return index + 1;
