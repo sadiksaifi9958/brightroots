@@ -9,7 +9,8 @@ export const QuizProvider = ({ children }) => {
   const [currentQues, setCurrentQues] = useState(0);
   const [xpEarned, setXpEarned] = useState(0);
   const [badgesUnlocked, setBadgesUnlocked] = useState(0);
-  const [answer, setAnswer] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const [lastResult, setLastResult] = useState(null);
   const [subjectProgress, setSubjectProgress] = useState({
     math: 0,
     gk: 0,
@@ -20,7 +21,7 @@ export const QuizProvider = ({ children }) => {
   const resetQuiz = () => {
     setScore(0);
     setCurrentQues(0);
-    setAnswer([]);
+    setAnswers([]);
   };
 
   return (
@@ -36,11 +37,13 @@ export const QuizProvider = ({ children }) => {
         setXpEarned,
         badgesUnlocked,
         setBadgesUnlocked,
-        answer,
-        setAnswer,
+        answers,
+        setAnswers,
         subjectProgress,
         setSubjectProgress,
         resetQuiz,
+        lastResult,
+        setLastResult,
       }}
     >
       {children}
