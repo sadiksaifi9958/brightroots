@@ -54,6 +54,13 @@ function Quiz() {
 
   const [timeLeft, setTimeLeft] = useState(30);
 
+  const [shuffledOptions, setShuffledOptions] = useState([]);
+
+  useEffect(() => {
+    const options = [...firstQuestion.options];
+    setShuffledOptions(options.sort(() => Math.random() - 0.5));
+  }, [currentQuestionIndex]);
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       setTimeLeft((prevTime) => {
@@ -116,7 +123,10 @@ function Quiz() {
   return (
     <div className="w-full">
       <div className="w-full py-10 flex justify-between px-4">
-        <button className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200">
+        <button
+          className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200"
+          onClick={() => navigate("/subjects")}
+        >
           <RxCross1 />
         </button>
         <div className="text-[#1A1A1A] font-bold">{displayName}</div>
@@ -164,7 +174,7 @@ function Quiz() {
           </h1>
         </div>
         <div className="flex flex-col gap-4 w-70/100">
-          {firstQuestion.options.map((option, index) => (
+          {shuffledOptions.map((option, index) => (
             <button
               className={`px-6 py-6 border rounded-2xl flex items-center gap-4 mb-4 cursor-pointer active:translate-y-1 transition-transform duration-150 ${option === firstQuestion.answer && selectedOption ? "bg-[#E0F7FA] border-[#00BCD4] text-[#00838F]" : option === selectedOption && option !== firstQuestion.answer ? "bg-[#FFEBEE] border-[#E57373] text-[#C62828]" : "bg-[#FFF3E8] border-[#FFD9B3] text-[#1A1A1A]"} ${
                 selectedOption &&

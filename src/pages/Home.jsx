@@ -1,5 +1,6 @@
 import subjects from "../data/subjects";
 import badges from "../data/badges";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const stats = [
@@ -57,6 +58,8 @@ function Home() {
     },
   ];
 
+  const navigate = useNavigate();
+
   return (
     <div className="w-full">
       <div className="bg-[#FF6B00] py-36 flex flex-col gap-4 items-center w-full">
@@ -71,10 +74,20 @@ function Home() {
           badges, and become a champion!
         </div>
         <div className="flex items-center gap-4">
-          <button className="px-2 py-1 text-md text-[#FFF8F2] rounded-lg border border-[#cc5500] cursor-pointer font-bold active:translate-y-0.5 hover:shadow-md transition-all duration-200">
+          <button
+            className="px-2 py-1 text-md text-[#FFF8F2] rounded-lg border border-[#cc5500] cursor-pointer font-bold active:translate-y-0.5 hover:shadow-md transition-all duration-200"
+            onClick={() => navigate("/subjects")}
+          >
             Start Learning
           </button>
-          <button className="px-2 py-1 text-md text-[#FFF8F2] rounded-lg border border-[#cc5500] cursor-pointer active:translate-y-0.5 hover:shadow-md transition-all duration-200">
+          <button
+            className="px-2 py-1 text-md text-[#FFF8F2] rounded-lg border border-[#cc5500] cursor-pointer active:translate-y-0.5 hover:shadow-md transition-all duration-200"
+            onClick={() =>
+              document
+                .getElementById("how-it-works")
+                .scrollIntoView({ behavior: "smooth" })
+            }
+          >
             How it works
           </button>
         </div>
@@ -123,7 +136,10 @@ function Home() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col gap-2 pl-8 mt-10">
+        <div
+          className="w-full flex flex-col gap-2 pl-8 mt-10"
+          id="how-it-works"
+        >
           <h1 className="text-xl text-[#1A1A1A] font-bold">How it works</h1>
           <p className="text-sm text-[#888888]">
             3 simple steps to start learning
