@@ -1,4 +1,5 @@
 import subjects from "../data/subjects";
+import badges from "../data/badges";
 
 function Home() {
   const stats = [
@@ -26,33 +27,6 @@ function Home() {
       title: "Earn XP and badges",
       subtitle:
         "Score high to unlock special badges and climb the leaderboard rankings.",
-    },
-  ];
-
-  const badges = [
-    {
-      icon: "⭐",
-      title: "First Star",
-      subtitle: "Complete first quiz",
-      unlocked: true,
-    },
-    {
-      icon: "🔥",
-      title: "On Fire",
-      subtitle: "Score 8/10 or more",
-      unlocked: true,
-    },
-    {
-      icon: "🏆",
-      title: "Champion",
-      subtitle: "Complete all 4 subjects",
-      unlocked: false,
-    },
-    {
-      icon: "💡",
-      title: "Genius",
-      subtitle: "Score 10/10 perfect",
-      unlocked: false,
     },
   ];
 

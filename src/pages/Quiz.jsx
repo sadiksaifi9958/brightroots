@@ -7,14 +7,25 @@ import mathQuestions from "../data/math";
 import evsQuestions from "../data/evs";
 import gkQuestions from "../data/gk";
 import digitalLiteracyQuestions from "../data/digital";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { QuizContext } from "../context/QuizContext";
+import { useQuiz } from "../context/QuizContext";
 
 function Quiz() {
   const { subjects } = useParams();
+
   const navigate = useNavigate();
-  const { setScore, setXpEarned, setSubjectProgress } = useContext(QuizContext);
+  const {
+    setScore,
+    setXpEarned,
+    setSubjectProgress,
+    setSelectedSubject,
+    setAnswers,
+  } = useQuiz();
+  useEffect(() => {
+    setSelectedSubject(subjects);
+  });
+
   const optionsLabel = ["A", "B", "C", "D"];
 
   const subjectNames = {
@@ -82,6 +93,15 @@ function Quiz() {
         return newScore;
       });
     }
+    setAnswers((prev) => [
+      ...prev,
+      {
+        question: firstQuestion.question,
+        userAnswer: selectedOption,
+        correctAnswer: firstQuestion.answer,
+        isCorrect: selectedOption === firstQuestion.answer,
+      },
+    ]);
     setCurrentQuestionIndex((index) => {
       if (index < questions.length - 1) {
         return index + 1;
