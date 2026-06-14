@@ -62,9 +62,9 @@ function Home() {
 
   return (
     <div className="w-full">
-      <div className="bg-[#FF6B00] py-36 flex flex-col gap-4 items-center w-full">
+      <div className="bg-[#FF6B00] py-20 sm:py-36 flex flex-col gap-4 items-center w-full">
         <span className="text-5xl">🌱</span>
-        <div className="flex items-center my-2 text-[#FFF8F2] text-5xl font-bold gap-2">
+        <div className="flex items-center my-2 text-[#FFF8F2] text-3xl sm:text-5xl font-bold gap-2">
           <div>Learn.</div>
           <div>Play.</div>
           <div>Grow.</div>
@@ -92,9 +92,9 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className="w-full grid grid-cols-4 gap-0 border-b-2 border-[#FFD9B3]">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-0 border-b-2 border-[#FFD9B3]">
         {stats.map((stat) => (
-          <div className="flex flex-col items-center gap-3 border-r-2 border-[#FFD9B3] py-16">
+          <div className="flex flex-col items-center gap-3 border-r-2 border-[#FFD9B3] py-8 sm:py-16">
             <h1 className="text-4xl text-[#FF6B00] font-bold">
               {stat.heading}
             </h1>
@@ -112,7 +112,7 @@ function Home() {
           </p>
           <div className="grid grid-cols-2 gap-6 mt-1 w-full items-center justify-center p-4">
             {subjects.map((card) => (
-              <div className="w-full py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-8 bg-white hover:shadow-md transition-shadow duration-200">
+              <div className="w-full py-6 sm:py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200">
                 <span className="text-5xl">{card.icon}</span>
                 <h1 className="text-xl text-[#1A1A1A] font-bold">
                   {card.name}
@@ -164,10 +164,10 @@ function Home() {
           <p className="text-sm text-[#888888]">
             Complete quizzes to earn these rewards
           </p>
-          <div className="flex items-center gap-6 justify-center mt-5 w-full">
+          <div className="flex items-center gap-6 justify-center mt-5 w-full overflow-hidden">
             {badges.map((badge) => (
               <div
-                className={`flex flex-col items-center p-16 border border-[#FFD9B3] rounded-xl shadow-sm hover:shadow-md bg-white w-full transition-shadow duration-200 ${badge.unlocked ? "opacity-100" : "opacity-40"}`}
+                className={`flex flex-col items-center p-4 sm:p-16 border border-[#FFD9B3] rounded-xl shadow-sm hover:shadow-md bg-white w-full transition-shadow duration-200 ${badge.unlocked ? "opacity-100" : "opacity-40"}`}
               >
                 <span className="text-4xl">{badge.icon}</span>
                 <h1 className="text-lg text-[#1A1A1A] font-bold">
@@ -199,7 +199,7 @@ function Home() {
                     <p className="text-sm text-[#888888]">{player.completed}</p>
                   </div>
                 </div>
-                <p className="text-2xl text-[#FF6B00] font-bold pr-8">
+                <p className="text-lg sm:text-2xl text-[#FF6B00] font-bold pr-2 sm:pr-8">
                   {player.xp}
                 </p>
               </div>
