@@ -92,9 +92,9 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-0 border-b-2 border-[#FFD9B3]">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-0 border-b-1 sm:border-b-2 border-[#FFD9B3]">
         {stats.map((stat) => (
-          <div className="flex flex-col items-center gap-3 border-r-2 border-[#FFD9B3] py-8 sm:py-16">
+          <div className="flex flex-col items-center gap-3 border-r-2 border-[#FFD9B3] py-8 sm:py-16 border-in-mobile">
             <h1 className="text-4xl text-[#FF6B00] font-bold">
               {stat.heading}
             </h1>
