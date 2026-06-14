@@ -4,8 +4,8 @@ html {
   scroll-behavior: smooth;
 }
 
-@media-queries(max-width: 360px){
-  .border-in-mobile{
-    border-bottom: 1px solid #FFD9B3;
+@media (max-width: 360px) {
+  .border-in-mobile {
+    border-bottom: 1px solid #ffd9b3;
   }
 }
