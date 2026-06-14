@@ -20,22 +20,22 @@ function Subjects() {
         Choose a subject
       </h1>
       <div className="w-full py-12 flex flex-col gap-2 bg-[#FF6B00] items-center">
-        <h1 className="text-3xl text-[#FFF8F2] font-bold">
+        <h1 className="text-xl sm:text-3xl text-[#FFF8F2] font-bold px-4 text-center">
           What do you want to learn today?
         </h1>
         <p className="text-md text-[#FFF8F2]">
           Each subject has 10 questions · Earn up to 100 XP
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-6 items-center justify-center w-full px-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 items-center justify-center w-full px-2 sm:px-6">
         {subjects.map((card) => (
           <div
-            className="w-full py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-8 bg-white hover:shadow-md transition-shadow duration-200 cursor-pointer"
+            className="w-full py-6 sm:py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200 cursor-pointer"
             onClick={() => navigate(`/quiz/${card.slug}`)}
           >
             <span className="text-5xl">{card.icon}</span>
             <h1 className="text-xl text-[#1A1A1A] font-bold">{card.name}</h1>
-            <p className="flex gap-2 text-[#888888]">
+            <p className=" text-[#888888] flex flex-col gap-0 text-sm sm:flex-row sm:gap-2">
               <span>10 Question</span> &#183; <span>Class 6th - 8th</span>
             </p>
             <div
@@ -49,7 +49,7 @@ function Subjects() {
             >
               {card.difficulty}
             </div>
-            <div className="flex flex-col items-start w-full pr-8 mt-2 gap-0.5">
+            <div className="flex flex-col items-start w-full pr-4 sm:pr-8 mt-2 gap-0.5">
               <div className="h-2 bg-[#FFF3E8] rounded-full w-full">
                 <div
                   className="h-2 bg-[#FF6B00] rounded-full"

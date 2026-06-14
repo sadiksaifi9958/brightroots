@@ -20,8 +20,8 @@ function Navbar() {
               to={link.path}
               className={({ isActive }) =>
                 isActive
-                  ? "text-sm sm:text-md text-[#FF6B00] hover:bg-orange-100 rounded-lg px-2 py-1 transition-colors duration-200"
-                  : "text-sm sm:text-md text-[#888888] hover:bg-zinc-200 rounded-lg px-2 py-1 transition-colors duration-200 whitespace-nowrap"
+                  ? "text-sm sm:text-md text-[#FF6B00] hover:bg-orange-100 rounded-lg px-1 sm:px-2 py-1 transition-colors duration-200"
+                  : "text-sm sm:text-md text-[#888888] hover:bg-zinc-200 rounded-lg px-1 sm:px-2 py-1 transition-colors duration-200 whitespace-nowrap"
               }
             >
               {link.label}

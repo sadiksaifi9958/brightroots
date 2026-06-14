@@ -92,7 +92,7 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-0 border-b-1 sm:border-b-2 border-[#FFD9B3]">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-0 border-b sm:border-b-2 border-[#FFD9B3]">
         {stats.map((stat) => (
           <div className="flex flex-col items-center gap-3 border-r-2 border-[#FFD9B3] py-8 sm:py-16 border-in-mobile">
             <h1 className="text-4xl text-[#FF6B00] font-bold">
@@ -146,7 +146,7 @@ function Home() {
           </p>
           {working.map((work) => (
             <div className="flex gap-4 items-start mt-5">
-              <div className="text-lg font-bold text-[#FFF8F2] bg-[#FF6B00] h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="text-lg font-bold text-[#FFF8F2] bg-[#FF6B00] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                 {work.num}
               </div>
               <div className="flex flex-col gap-1 items-start">
