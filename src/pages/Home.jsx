@@ -69,7 +69,7 @@ function Home() {
           <div>Play.</div>
           <div>Grow.</div>
         </div>
-        <div className="text-[#FFF8F2] text-center max-w-md text-md px-2 sm:px-0">
+        <div className="text-[#FFF8F2] text-center max-w-md text-md px-4 sm:px-0">
           A gamified learning platform for rural students. Earn XP, unlock
           badges, and become a champion!
         </div>
@@ -159,7 +159,7 @@ function Home() {
           ))}
         </div>
 
-        <div className="w-full flex flex-col gap-2 pl-8 mt-12">
+        <div className="w-full flex flex-col gap-2 px-8 mt-12">
           <h1 className="text-xl text-[#1A1A1A] font-bold">Badges to unlock</h1>
           <p className="text-sm text-[#888888]">
             Complete quizzes to earn these rewards
