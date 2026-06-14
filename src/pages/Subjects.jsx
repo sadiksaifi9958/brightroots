@@ -30,21 +30,21 @@ function Subjects() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 items-center justify-center w-full px-2 sm:px-6">
         {subjects.map((card) => (
           <div
-            className="w-full py-6 sm:py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200 cursor-pointer"
+            className="w-full py-6 sm:py-8 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200 cursor-pointer"
             onClick={() => navigate(`/quiz/${card.slug}`)}
           >
             <span className="text-5xl">{card.icon}</span>
             <h1 className="text-xl text-[#1A1A1A] font-bold">{card.name}</h1>
-            <p className=" text-[#888888] flex flex-col gap-0 text-sm sm:flex-row sm:gap-2">
+            <p className=" text-[#888888] flex gap-2 text-sm">
               <span>10 Question</span> &#183; <span>Class 6th - 8th</span>
             </p>
             <div
               className={
                 card.difficulty === "Hard"
-                  ? "px-3 py-1 bg-[#FFEBEE] text-[#C62828] rounded-2xl text-sm"
+                  ? "px-3 py-1 bg-[#FFEBEE] text-[#C62828] rounded-2xl text-sm mt-1"
                   : card.difficulty === "Medium"
-                    ? "px-3 py-1 bg-[#FFF3E8] text-[#E65100] rounded-2xl text-sm"
-                    : "px-3 py-1 bg-[#E0F7FA] text-[#00838F] rounded-2xl text-sm"
+                    ? "px-3 py-1 bg-[#FFF3E8] text-[#E65100] rounded-2xl text-sm mt-1"
+                    : "px-3 py-1 bg-[#E0F7FA] text-[#00838F] rounded-2xl text-sm mt-1"
               }
             >
               {card.difficulty}
