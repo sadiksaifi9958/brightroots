@@ -5,7 +5,7 @@ html {
 }
 
 @media-queries(max-width: 360px){
-  #border-in-mobile{
+  .border-in-mobile{
     border-bottom: 1px solid #FFD9B3;
   }
 }
