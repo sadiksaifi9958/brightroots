@@ -3,9 +3,3 @@
 html {
   scroll-behavior: smooth;
 }
-
-@media (max-width: 360px) {
-  .border-in-mobile {
-    border-bottom: 1px solid #ffd9b3;
-  }
-}
