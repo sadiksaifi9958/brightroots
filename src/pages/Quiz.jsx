@@ -170,7 +170,7 @@ function Quiz() {
         </div>
         <div className="sm:py-6 sm:px-8 px-4 py-4 bg-[#FF6B00] rounded-2xl mb-4 w-full sm:w-70/100">
           <div className="text-[#FFD9B3] text-sm uppercase mb-1">
-           {`Question ${currentQuestionIndex + 1}}
+            {`Question ${currentQuestionIndex + 1}`}
           </div>
           <h1 className="text-[#FFF8F2] sm:text-2xl text-lg  font-bold">
             {firstQuestion.question}
