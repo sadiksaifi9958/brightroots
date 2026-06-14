@@ -69,7 +69,7 @@ function Home() {
           <div>Play.</div>
           <div>Grow.</div>
         </div>
-        <div className="text-[#FFF8F2] text-center max-w-md text-md">
+        <div className="text-[#FFF8F2] text-center max-w-md text-md px-2 sm:px-0">
           A gamified learning platform for rural students. Earn XP, unlock
           badges, and become a champion!
         </div>
@@ -110,7 +110,7 @@ function Home() {
           <p className="text-sm text-[#888888] pl-4">
             Pick any subject and start your quest
           </p>
-          <div className="grid grid-cols-2 gap-6 mt-1 w-full items-center justify-center p-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-1 w-full items-center justify-center p-4">
             {subjects.map((card) => (
               <div className="w-full py-6 sm:py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200">
                 <span className="text-5xl">{card.icon}</span>
@@ -164,7 +164,7 @@ function Home() {
           <p className="text-sm text-[#888888]">
             Complete quizzes to earn these rewards
           </p>
-          <div className="flex items-center gap-6 justify-center mt-5 w-full overflow-hidden">
+          <div className="flex flex-col sm:flex-row items-center gap-6 justify-center mt-5 w-full overflow-hidden">
             {badges.map((badge) => (
               <div
                 className={`flex flex-col items-center p-4 sm:p-16 border border-[#FFD9B3] rounded-xl shadow-sm hover:shadow-md bg-white w-full transition-shadow duration-200 ${badge.unlocked ? "opacity-100" : "opacity-40"}`}
