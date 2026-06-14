@@ -170,7 +170,7 @@ function Quiz() {
         </div>
         <div className="sm:py-6 sm:px-8 px-4 py-4 bg-[#FF6B00] rounded-2xl mb-4 w-full sm:w-70/100">
           <div className="text-[#FFD9B3] text-sm uppercase mb-1">
-            Question 3
+           {`Question ${currentQuestionIndex + 1}}
           </div>
           <h1 className="text-[#FFF8F2] sm:text-2xl text-lg  font-bold">
             {firstQuestion.question}
@@ -179,7 +179,7 @@ function Quiz() {
         <div className="flex flex-col gap-4 w-full sm:w-70/100">
           {shuffledOptions.map((option, index) => (
             <button
-              className={`sm:px-6 sm:py-6 px-4 py-4 border rounded-2xl flex items-center text-left gap-4 mb-4 cursor-pointer active:translate-y-1 transition-transform duration-150 ${option === firstQuestion.answer && selectedOption ? "bg-[#E0F7FA] border-[#00BCD4] text-[#00838F]" : option === selectedOption && option !== firstQuestion.answer ? "bg-[#FFEBEE] border-[#E57373] text-[#C62828]" : "bg-[#FFF3E8] border-[#FFD9B3] text-[#1A1A1A]"} ${
+              className={`sm:px-6 sm:py-6 px-4 py-4 border rounded-2xl flex items-center text-left gap-4 cursor-pointer active:translate-y-1 transition-transform duration-150 ${option === firstQuestion.answer && selectedOption ? "bg-[#E0F7FA] border-[#00BCD4] text-[#00838F]" : option === selectedOption && option !== firstQuestion.answer ? "bg-[#FFEBEE] border-[#E57373] text-[#C62828]" : "bg-[#FFF3E8] border-[#FFD9B3] text-[#1A1A1A]"} ${
                 selectedOption &&
                 option !== firstQuestion.answer &&
                 option !== selectedOption
