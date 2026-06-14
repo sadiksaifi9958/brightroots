@@ -137,7 +137,7 @@ function Home() {
         </div>
 
         <div
-          className="w-full flex flex-col gap-2 pl-8 mt-10"
+          className="w-full flex flex-col gap-2 px-8 mt-10"
           id="how-it-works"
         >
           <h1 className="text-xl text-[#1A1A1A] font-bold">How it works</h1>
@@ -146,7 +146,7 @@ function Home() {
           </p>
           {working.map((work) => (
             <div className="flex gap-4 items-start mt-5">
-              <div className="text-lg font-bold text-[#FFF8F2] bg-[#FF6B00] h-10 w-10 rounded-full flex items-center justify-center">
+              <div className="text-lg font-bold text-[#FFF8F2] bg-[#FF6B00] h-10 w-10 rounded-full flex items-center justify-center flex-shrink-0">
                 {work.num}
               </div>
               <div className="flex flex-col gap-1 items-start">
