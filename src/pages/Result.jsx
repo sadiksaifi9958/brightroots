@@ -3,6 +3,11 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useQuiz } from "../context/QuizContext";
 import badges from "../data/badges";
 import { useNavigate } from "react-router-dom";
+import { GiPlantRoots } from "react-icons/gi";
+import { MdCelebration } from "react-icons/md";
+import { ImCross } from "react-icons/im";
+import { FaCheck } from "react-icons/fa";
+import { MdRocketLaunch } from "react-icons/md";
 
 function Result() {
   const { score, xpEarned, selectedSubject, answers, resetQuiz } = useQuiz();
@@ -20,16 +25,21 @@ function Result() {
   if (answers.length === 0) {
     return (
       <div className="w-full flex flex-col items-center justify-center gap-6 py-24 px-8 text-center">
-        <div className="text-7xl">🌱</div>
+        <div className="text-7xl text-[#FF6B00]">
+          <GiPlantRoots />
+        </div>
         <h1 className="text-2xl font-bold text-[#1A1A1A]">No results yet!</h1>
         <p className="text-[#888888] text-md">
           Play your first quiz to see your score, badges and progress here.
         </p>
         <button
           onClick={() => navigate("/subjects")}
-          className="bg-[#FF6B00] text-white font-bold px-8 py-3 rounded-full cursor-pointer"
+          className="bg-[#FF6B00] text-white font-bold px-8 py-3 rounded-full cursor-pointer flex gap-2 items-center"
         >
-          Start Your First Quiz 🚀
+          Start Your First Quiz
+          <div className="text-2xl">
+            <MdRocketLaunch />
+          </div>
         </button>
       </div>
     );
@@ -40,7 +50,9 @@ function Result() {
           Quiz Complete!
         </div>
         <div className="w-full sm:py-24 py-16 flex flex-col items-center gap-2 bg-[#FF6B00]">
-          <div className="text-7xl">🎉</div>
+          <div className="text-7xl text-white">
+            <MdCelebration />
+          </div>
           <div className="text-[#FFF8F2] sm:text-3xl text-xl font-bold">
             Great job, keep it up!
           </div>
@@ -86,7 +98,7 @@ function Result() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full px-4 sm:px-12">
             {earnedBadges.map((badge) => (
               <div className="flex flex-col items-center p-4 sm:p-16 border border-[#FFD9B3] rounded-xl shadow-sm hover:shadow-md bg-white w-full transition-shadow duration-200">
-                <span className="text-4xl">{badge.icon}</span>
+                <span className="text-4xl text-[#FF6B00]">{badge.icon}</span>
                 <h1 className="text-lg text-[#1A1A1A] font-bold">
                   {badge.title}
                 </h1>
@@ -104,9 +116,10 @@ function Result() {
                 className={`w-full border rounded-2xl py-6 px-4 sm:px-8 flex flex-col gap-2 ${answer.isCorrect ? "bg-[#E0F7FA] border-[#00BCD4]" : "bg-[#FFEBEE] border-[#E57373]"}`}
               >
                 <div
-                  className={`text-base sm:text-xl font-bold ${answer.isCorrect ? "text-[#00838F]" : "text-[#C62828]"}`}
+                  className={`text-base sm:text-xl font-bold flex gap-2 items-center ${answer.isCorrect ? "text-[#00838F]" : "text-[#C62828]"}`}
                 >
-                  {answer.isCorrect ? "✅" : "❌"} {answer.question}
+                  <div>{answer.isCorrect ? <FaCheck /> : <ImCross />} </div>
+                  <div>{answer.question}</div>
                 </div>
                 <div className="text-sm text-[#888888]">
                   Your answer: {answer.userAnswer}

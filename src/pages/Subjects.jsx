@@ -33,7 +33,7 @@ function Subjects() {
             className="w-full py-6 sm:py-8 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200 cursor-pointer"
             onClick={() => navigate(`/quiz/${card.slug}`)}
           >
-            <span className="text-5xl">{card.icon}</span>
+            <span className="text-5xl text-[#FF6B00]">{card.icon}</span>
             <h1 className="text-xl text-[#1A1A1A] font-bold">{card.name}</h1>
             <p className=" text-[#888888] flex gap-2 text-sm">
               <span>10 Question</span> &#183; <span>Class 6th - 8th</span>
