@@ -3,13 +3,19 @@ import subjects from "../data/subjects";
 import { useNavigate } from "react-router-dom";
 import { QuizContext } from "../context/QuizContext";
 import { useContext } from "react";
+import { motion } from "framer-motion";
 
 function Subjects() {
   const navigate = useNavigate();
   const { subjectProgress } = useContext(QuizContext);
 
   return (
-    <div className="w-full flex flex-col gap-8 bg-[#FFF8F2] p-4">
+    <motion.div
+      className="w-full flex flex-col gap-8 bg-[#FFF8F2] p-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <button
         className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200"
         onClick={() => navigate(-1)}
@@ -70,7 +76,7 @@ function Subjects() {
           and maximum XP!
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

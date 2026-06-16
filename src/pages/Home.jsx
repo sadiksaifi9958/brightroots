@@ -2,6 +2,7 @@ import subjects from "../data/subjects";
 import badges from "../data/badges";
 import { useNavigate } from "react-router-dom";
 import { GiPlantRoots } from "react-icons/gi";
+import { motion } from "framer-motion";
 
 function Home() {
   const stats = [
@@ -62,7 +63,12 @@ function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full">
+    <motion.div
+      className="w-full"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="bg-[#FF6B00] py-20 sm:py-36 flex flex-col gap-4 items-center w-full">
         <span className="text-6xl text-white">
           <GiPlantRoots />
@@ -210,7 +216,7 @@ function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

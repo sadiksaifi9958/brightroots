@@ -10,6 +10,7 @@ import digitalLiteracyQuestions from "../data/digital";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuiz } from "../context/QuizContext";
+import { motion } from "framer-motion";
 
 function Quiz() {
   const { subjects } = useParams();
@@ -122,7 +123,12 @@ function Quiz() {
   };
 
   return (
-    <div className="w-full">
+    <motion.div
+      className="w-full"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4 }}
+    >
       <div className="w-full py-5 sm:py-8 flex justify-between px-4">
         <button
           className="p-4 text-[#888888] text-lg border border-[#FFD9B3] rounded-xl hover:not-only:bg-white w-fit cursor-pointer active:scale-95 transition-all duration-200"
@@ -218,7 +224,7 @@ function Quiz() {
           </button>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

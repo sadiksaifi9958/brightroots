@@ -8,6 +8,7 @@ import { MdCelebration } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 import { FaCheck } from "react-icons/fa";
 import { MdRocketLaunch } from "react-icons/md";
+import { motion } from "framer-motion";
 
 function Result() {
   const { score, xpEarned, selectedSubject, answers, resetQuiz } = useQuiz();
@@ -24,7 +25,12 @@ function Result() {
 
   if (answers.length === 0) {
     return (
-      <div className="w-full flex flex-col items-center justify-center gap-6 py-24 px-8 text-center">
+      <motion.div
+        className="w-full flex flex-col items-center justify-center gap-6 py-24 px-8 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         <div className="text-7xl text-[#FF6B00]">
           <GiPlantRoots />
         </div>
@@ -41,11 +47,16 @@ function Result() {
             <MdRocketLaunch />
           </div>
         </button>
-      </div>
+      </motion.div>
     );
   } else {
     return (
-      <div className="w-full bg-[#FFF8F2]">
+      <motion.div
+        className="w-full bg-[#FFF8F2]"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         <div className="h-16 py-4 px-4 w-full font-bold text-lg text-[#1A1A1A]">
           Quiz Complete!
         </div>
@@ -145,7 +156,7 @@ function Result() {
             <FaArrowLeft /> Choose Different Subject
           </button>
         </div>
-      </div>
+      </motion.div>
     );
   }
 }
