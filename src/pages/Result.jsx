@@ -9,7 +9,7 @@ import { ImCross } from "react-icons/im";
 import { FaCheck } from "react-icons/fa";
 import { MdRocketLaunch } from "react-icons/md";
 import { motion } from "framer-motion";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 
 function Result() {
   const { score, xpEarned, selectedSubject, answers, resetQuiz } = useQuiz();
@@ -35,8 +35,8 @@ function Result() {
         }
         return prev + 1;
       });
-    }, 140);
-  }, []);
+    }, 150);
+  });
 
   if (answers.length === 0) {
     return (
@@ -125,15 +125,13 @@ function Result() {
             {earnedBadges.map((badge, index) => (
               <motion.div
                 className="flex flex-col items-center p-4 sm:p-16 border border-[#FFD9B3] rounded-xl shadow-sm hover:shadow-md bg-white w-full transition-shadow duration-200"
-                key={badge.title}
                 initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
+                animate={{ scale: 1, opacity: 1 }}
                 transition={{
                   type: "spring",
-                  stiffness: 150,
-                  damping: 15,
-                  delay: index * 0.2,
+                  stiffness: 200,
+                  damping: 12,
+                  delay: index * 0.15,
                 }}
               >
                 <span className="text-4xl text-[#FF6B00]">{badge.icon}</span>
