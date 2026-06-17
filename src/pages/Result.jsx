@@ -9,6 +9,7 @@ import { ImCross } from "react-icons/im";
 import { FaCheck } from "react-icons/fa";
 import { MdRocketLaunch } from "react-icons/md";
 import { motion } from "framer-motion";
+import { useState, useEffect, use } from "react";
 
 function Result() {
   const { score, xpEarned, selectedSubject, answers, resetQuiz } = useQuiz();
@@ -22,6 +23,20 @@ function Result() {
 
   const displayName = subjectNames[selectedSubject];
   const navigate = useNavigate();
+
+  const [displayScore, setDisplayScore] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setDisplayScore((prev) => {
+        if (prev >= score) {
+          clearInterval(intervalId);
+          return prev;
+        }
+        return prev + 1;
+      });
+    }, 140);
+  }, []);
 
   if (answers.length === 0) {
     return (
@@ -75,7 +90,7 @@ function Result() {
           <div className="flex flex-col gap-1">
             <div className="flex items-end mx-auto">
               <div className="text-6xl text-[#FF6B00] font-semibold">
-                {score}
+                {displayScore}
               </div>
               <div className="text-[#888888] text-3xl font-semibold">/ 10</div>
             </div>
@@ -107,14 +122,26 @@ function Result() {
         <div className="w-full flex flex-col gap-5 px-4 sm:px-12 items-start mt-8">
           <div className="font-bold text-xl text-[#1A1A1A]">Badge unlocked</div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full px-4 sm:px-12">
-            {earnedBadges.map((badge) => (
-              <div className="flex flex-col items-center p-4 sm:p-16 border border-[#FFD9B3] rounded-xl shadow-sm hover:shadow-md bg-white w-full transition-shadow duration-200">
+            {earnedBadges.map((badge, index) => (
+              <motion.div
+                className="flex flex-col items-center p-4 sm:p-16 border border-[#FFD9B3] rounded-xl shadow-sm hover:shadow-md bg-white w-full transition-shadow duration-200"
+                key={badge.title}
+                initial={{ scale: 0, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  type: "spring",
+                  stiffness: 150,
+                  damping: 15,
+                  delay: index * 0.2,
+                }}
+              >
                 <span className="text-4xl text-[#FF6B00]">{badge.icon}</span>
                 <h1 className="text-lg text-[#1A1A1A] font-bold">
                   {badge.title}
                 </h1>
                 <p className="text-sm text-[#888888]">{badge.subtitle}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
