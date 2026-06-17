@@ -121,7 +121,11 @@ function Home() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-1 w-full items-center justify-center p-4">
             {subjects.map((card) => (
-              <div className="w-full py-6 sm:py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200">
+              <motion.div
+                className="w-full py-6 sm:py-10 flex flex-col gap-2 items-start justify-center border border-[#FFD9B3] rounded-xl pl-4 sm:pl-8 bg-white hover:shadow-md transition-shadow duration-200"
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.2 }}
+              >
                 <span className="text-5xl text-[#FF6B00]">{card.icon}</span>
                 <h1 className="text-xl text-[#1A1A1A] font-bold">
                   {card.name}
@@ -140,7 +144,7 @@ function Home() {
                 >
                   {card.difficulty}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
