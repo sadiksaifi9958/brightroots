@@ -184,7 +184,7 @@ function Quiz() {
         </div>
         <div className="flex flex-col gap-4 w-full sm:w-70/100 mb-4">
           {shuffledOptions.map((option, index) => (
-            <button
+            <motion.button
               className={`sm:px-6 sm:py-6 px-4 py-4 border rounded-2xl flex items-center text-left gap-4 cursor-pointer active:translate-y-1 transition-transform duration-150 ${option === firstQuestion.answer && selectedOption ? "bg-[#E0F7FA] border-[#00BCD4] text-[#00838F]" : option === selectedOption && option !== firstQuestion.answer ? "bg-[#FFEBEE] border-[#E57373] text-[#C62828]" : "bg-[#FFF3E8] border-[#FFD9B3] text-[#1A1A1A]"} ${
                 selectedOption &&
                 option !== firstQuestion.answer &&
@@ -194,12 +194,16 @@ function Quiz() {
               }`}
               onClick={() => setSelectedOption(option)}
               disabled={!!selectedOption}
+              key={option}
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.2 }}
             >
               <div className="text-lg text-[#FFD9B3] font-bold">
                 {optionsLabel[index]}
               </div>
               <div className="text-[#1A1A1A] text-lg flex-1">{option}</div>
-            </button>
+            </motion.button>
           ))}
         </div>
         {selectedOption && (
